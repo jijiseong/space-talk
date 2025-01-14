@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import '@/styles/global.css';
 import styles from './app.css';
 import Scene from '@/components/common/scene';
+import Header from '@/components/common/header';
+import { theme } from '@/styles/theme.css';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -27,8 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${styles.body}`}
+        className={`${geistSans.variable} ${geistMono.variable} ${theme} ${styles.body}`}
       >
+        <Header />
         <Scene>{children}</Scene>
       </body>
     </html>

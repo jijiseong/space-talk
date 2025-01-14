@@ -1,12 +1,9 @@
 import {
-  gray,
-  blue,
-  red,
-  green,
   grayDark,
   blueDark,
   redDark,
   greenDark,
+  slateDark,
 } from '@radix-ui/colors';
 import { createTheme } from '@vanilla-extract/css';
 
@@ -16,5 +13,6 @@ export const [theme, vars] = createTheme({
     ...blueDark,
     ...redDark,
     ...greenDark,
+    ...slateDark,
   },
 });
