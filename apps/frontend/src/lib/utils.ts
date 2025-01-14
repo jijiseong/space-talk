@@ -1,3 +1,6 @@
-export function cn(...args: string[]) {
-  return args.join(' ').trim();
+export function cn(...args: (string | undefined)[]) {
+  return args
+    .filter(v => v !== undefined)
+    .join(' ')
+    .trim();
 }

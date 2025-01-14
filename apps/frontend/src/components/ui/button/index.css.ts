@@ -8,6 +8,10 @@ const base = style({
   fontSize: '1rem',
   color: vars.colors.gray12,
   border: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: vars.space.sm,
 });
 
 const size = styleVariants({

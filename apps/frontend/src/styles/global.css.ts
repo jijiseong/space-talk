@@ -24,6 +24,7 @@ time, mark, audio, video`,
     fontSize: '100%',
     font: 'inherit',
     verticalAlign: 'baseline',
+    boxSizing: 'border-box',
   },
 );
 
@@ -59,7 +60,7 @@ globalStyle('table', {
 
 globalStyle('html', {
   fontSize: '14px',
-  color: vars.colors.gray12,
+  color: vars.colors.white,
 
   '@media': {
     [mq.min('md')]: {
@@ -69,4 +70,8 @@ globalStyle('html', {
       fontSize: '16px',
     },
   },
+});
+
+globalStyle('button', {
+  border: 'none',
 });

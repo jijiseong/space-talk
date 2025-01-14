@@ -19,9 +19,14 @@ const headerInner = style({
   margin: '0 auto',
 });
 
+const loginButton = style({
+  marginLeft: 'auto',
+});
+
 const styles = {
   header,
   headerInner,
+  loginButton,
 };
 
 export default styles;
