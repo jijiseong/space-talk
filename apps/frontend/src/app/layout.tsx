@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import '@/styles/global.css';
 import styles from './app.css';
-import Scene from '@/components/common/scene';
 import Header from '@/components/common/header';
 import { theme } from '@/styles/theme.css';
 import ReactQueryProvider from '@/components/provider/query-provider';
