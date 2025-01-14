@@ -6,15 +6,15 @@ const header = style({
   left: 0,
   right: 0,
   height: '4rem',
-  width: '100vw',
   zIndex: 1000,
+  padding: '0 1rem',
 });
 
 const headerInner = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  maxWidth: 1400,
+  width: '100%',
   height: '100%',
   margin: '0 auto',
 });

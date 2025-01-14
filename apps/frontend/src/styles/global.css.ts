@@ -1,5 +1,6 @@
 import { globalStyle } from '@vanilla-extract/css';
 import { vars } from './theme.css';
+import { mq } from '@/lib/midea-query';
 
 // Reset CSS
 globalStyle(
@@ -57,6 +58,15 @@ globalStyle('table', {
 });
 
 globalStyle('html', {
-  fontSize: '16px',
+  fontSize: '14px',
   color: vars.colors.gray12,
+
+  '@media': {
+    [mq.min('md')]: {
+      fontSize: '15px',
+    },
+    [mq.min('lg')]: {
+      fontSize: '16px',
+    },
+  },
 });
