@@ -1,8 +1,31 @@
+'use client';
+
+import Star from '@/components/common/star';
+import { Sphere, Stars } from '@react-three/drei';
+
 export default function Home() {
   return (
-    <div>
-      <h1>Hello World</h1>
-      <h1>{process.env.NEXT_PUBLIC_API_URL}</h1>
-    </div>
+    <>
+      <Stars
+        radius={100}
+        depth={50}
+        count={10000}
+        factor={4}
+        saturation={0}
+        fade
+        speed={1}
+      />
+      <Sphere position={[-4, 0, 0]}>
+        <meshStandardMaterial color="gray" />
+      </Sphere>
+
+      <Star
+        position={[0, 0, 0]}
+        distance={100}
+        intensity={100}
+        size={1}
+        color={'white'}
+      />
+    </>
   );
 }
