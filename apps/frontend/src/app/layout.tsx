@@ -5,6 +5,7 @@ import styles from './app.css';
 import Scene from '@/components/common/scene';
 import Header from '@/components/common/header';
 import { theme } from '@/styles/theme.css';
+import ReactQueryProvider from '@/components/provider/query-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,8 +32,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${theme} ${styles.body}`}
       >
-        <Header />
-        <Scene>{children}</Scene>
+        <ReactQueryProvider>
+          <Header />
+          {children}
+        </ReactQueryProvider>
       </body>
     </html>
   );

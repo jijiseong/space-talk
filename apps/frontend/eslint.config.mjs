@@ -1,5 +1,6 @@
 import { nextJsConfig } from '@repo/eslint-config/next-js';
-import pluginReactThree from '@react-three/eslint-plugin';
+import pluginQuery from '@tanstack/eslint-plugin-query';
+
 /** @type {import("eslint").Linter.Config} */
 export default [
   ...nextJsConfig,
@@ -8,4 +9,5 @@ export default [
       'react/no-unknown-property': 'off',
     },
   },
+  ...pluginQuery.configs['flat/recommended'],
 ];

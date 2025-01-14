@@ -1,5 +1,4 @@
 import { globalStyle } from '@vanilla-extract/css';
-import { vars } from './theme.css';
 import { mq } from '@/lib/midea-query';
 
 // Reset CSS
@@ -60,7 +59,7 @@ globalStyle('table', {
 
 globalStyle('html', {
   fontSize: '14px',
-  color: vars.colors.white,
+  color: 'white',
 
   '@media': {
     [mq.min('md')]: {

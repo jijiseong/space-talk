@@ -1,3 +1,5 @@
+'use client';
+
 import Button from '@/components/ui/button';
 import styles from './index.css';
 import Dialog from '@/components/ui/dialog';
@@ -14,6 +16,21 @@ function Header() {
 }
 
 function LoginButton() {
+  const params = {
+    client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+    redirect_uri: process.env.NEXT_PUBLIC_GOOGLE_REDIRECT_URI,
+    scope: 'email profile',
+    response_type: 'code',
+  };
+
+  const url = new URL('https://accounts.google.com/o/oauth2/auth');
+  url.searchParams.set('client_id', params.client_id);
+  url.searchParams.set('redirect_uri', params.redirect_uri);
+  url.searchParams.set('scope', params.scope);
+  url.searchParams.set('response_type', params.response_type);
+
+  const authUrl = url.toString();
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -28,7 +45,7 @@ function LoginButton() {
             Please Login with your Google account.
           </Dialog.Description>
         </Dialog.Header>
-        <Button full>
+        <Button full onClick={() => (window.location.href = authUrl)}>
           <Icon.Google />
           <span>Login with Google</span>
         </Button>

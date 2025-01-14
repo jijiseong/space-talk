@@ -1,11 +1,12 @@
 'use client';
 
+import Scene from '@/components/common/scene';
 import Star from '@/components/common/star';
 import { Sphere, Stars } from '@react-three/drei';
 
 export default function Home() {
   return (
-    <>
+    <Scene>
       <Stars
         radius={100}
         depth={50}
@@ -26,6 +27,6 @@ export default function Home() {
         size={1}
         color={'white'}
       />
-    </>
+    </Scene>
   );
 }
