@@ -1,14 +1,20 @@
+import {
+  gray,
+  blue,
+  red,
+  green,
+  grayDark,
+  blueDark,
+  redDark,
+  greenDark,
+} from '@radix-ui/colors';
 import { createTheme } from '@vanilla-extract/css';
 
-export const [themeClass, vars] = createTheme({
+export const [theme, vars] = createTheme({
   colors: {
-    primary: 'red',
-    white: '#fff',
-    black: '#000',
-  },
-  space: {
-    sm: '4px',
-    md: '8px',
-    lg: '16px',
+    ...grayDark,
+    ...blueDark,
+    ...redDark,
+    ...greenDark,
   },
 });
