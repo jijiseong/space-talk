@@ -11,16 +11,12 @@ export class GoogleController {
   ) {}
 
   @Post()
-  async login(@Body() createGoogleDto: CreateGoogleDto) {
-    const { data: googleToken } = await this.googleService.getToken(
-      createGoogleDto.code,
-    );
-    const { name, email, verified_email } =
-      await this.googleService.getUserInfo(googleToken.access_token);
+  async login(@Body() { code }: CreateGoogleDto) {
+    const googleToken = await this.googleService.getToken(code);
 
-    if (!verified_email) {
-      throw new UnauthorizedException('Email is not verified');
-    }
+    const { name, email } = await this.googleService.getUserInfo(
+      googleToken.access_token,
+    );
 
     const serviceToken = await this.authService.userInfoToToken({
       username: name,

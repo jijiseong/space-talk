@@ -1,5 +1,5 @@
 import { setCookie } from '@/actions/cookie';
-import { SECOND } from '@repo/shared/constants';
+import { SECOND } from '@repo/shared';
 
 export const decodeJWT = (token: string) => {
   try {

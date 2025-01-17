@@ -1,15 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { GOOGLE_API_ENDPOINT, GOOGLE_OAUTH_ENDPOINT } from './constants';
 import { GoogleToken, GoogleUserInfo } from './types';
 import { HttpService } from '@nestjs/axios';
 import { AxiosError } from 'axios';
-import { ApiResponse } from '@repo/shared';
-
+import { GoogleLoginFailedException } from '@/lib/exceptions/user.exception';
 @Injectable()
 export class GoogleService {
   constructor(private readonly httpService: HttpService) {}
 
-  async getToken(code: string): Promise<ApiResponse<GoogleToken>> {
+  async getToken(code: string): Promise<GoogleToken> {
     const url = new URL(GOOGLE_OAUTH_ENDPOINT);
     url.searchParams.set('code', code);
     url.searchParams.set('client_id', process.env.GOOGLE_CLIENT_ID);
@@ -26,12 +25,10 @@ export class GoogleService {
           },
         },
       );
-      return { data, message: 'SUCCESS', success: true };
+      return data;
     } catch (error) {
-      if (error instanceof AxiosError) {
-        return { data: error.response.data, message: 'FAILED', success: false };
-      }
-      return { data: null, message: 'FAILED', success: false };
+      if (!(error instanceof AxiosError)) throw error;
+      throw new GoogleLoginFailedException();
     }
   }
 
@@ -41,6 +38,11 @@ export class GoogleService {
     const { data } = await this.httpService.axiosRef.get<GoogleUserInfo>(
       url.toString(),
     );
+
+    if (!data.verified_email) {
+      throw new UnauthorizedException('Email is not verified');
+    }
+
     return data;
   }
 }

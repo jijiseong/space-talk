@@ -4,7 +4,7 @@ import { ApiResponse } from '@repo/shared/types';
 export async function loginWithGoogle(code: string) {
   const { data } = await api.post<
     ApiResponse<{ accessToken: string; refreshToken: string }>
-  >('/oauth/google', { code });
+  >('/user/auth/google', { code });
 
   return data;
 }
